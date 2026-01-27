@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MenuMines - Daily Minesweeper in Your Menu Bar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+        .ascii-art {
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1.2;
+            white-space: pre;
+        }
+
+        .game-grid {
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.1em;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        .cell-hidden {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            box-shadow: inset 2px 2px 0 #718096, inset -2px -2px 0 #1a202c;
+        }
+
+        .cell-revealed {
+            background: #e2e8f0;
+            box-shadow: inset 1px 1px 0 #cbd5e0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            border: 2px solid #4a5568;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .screenshot-card {
+            background: #1e293b;
+            border: 3px solid #334155;
+            border-radius: 12px;
+        }
+
+        .num-1 { color: #3b82f6; }
+        .num-2 { color: #22c55e; }
+        .num-3 { color: #ef4444; }
+        .num-4 { color: #1e40af; }
+        .num-5 { color: #92400e; }
+    </style>
+</head>
+<body class="gradient-bg text-gray-100 min-h-screen">
+
+    <!-- Hero Section -->
+    <header class="container mx-auto px-6 pt-16 pb-12 text-center">
+        <div class="ascii-art text-xs sm:text-sm md:text-base text-indigo-400 mb-8 overflow-x-auto">
+<pre class="inline-block text-left">
+███╗   ███╗███████╗███╗   ██╗██╗   ██╗
+████╗ ████║██╔════╝████╗  ██║██║   ██║
+██╔████╔██║█████╗  ██╔██╗ ██║██║   ██║
+██║╚██╔╝██║██╔══╝  ██║╚██╗██║██║   ██║
+██║ ╚═╝ ██║███████╗██║ ╚████║╚██████╔╝
+╚═╝     ╚═╝╚══════╝╚═╝  ╚═══╝ ╚═════╝
+███╗   ███╗██╗███╗   ██╗███████╗███████╗
+████╗ ████║██║████╗  ██║██╔════╝██╔════╝
+██╔████╔██║██║██╔██╗ ██║█████╗  ███████╗
+██║╚██╔╝██║██║██║╚██╗██║██╔══╝  ╚════██║
+██║ ╚═╝ ██║██║██║ ╚████║███████╗███████║
+╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚══════╝╚══════╝
+</pre>
+        </div>
+
+        <p class="text-2xl md:text-3xl text-gray-300 mb-4">
+            Daily Minesweeper in Your Menu Bar
+        </p>
+
+        <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+            One puzzle. Every day. Same board for everyone on Earth.
+        </p>
+    </header>
+
+    <!-- App Preview + CTA Section -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
+
+            <!-- Game Preview -->
+            <div class="screenshot-card p-4 max-w-xs">
+                <div class="bg-gray-800 rounded-lg overflow-hidden">
+                    <!-- Header -->
+                    <div class="flex justify-between items-center px-4 py-3 bg-gray-700 border-b border-gray-600">
+                        <span class="text-sm">🚩 010</span>
+                        <span class="text-2xl cursor-pointer hover:scale-110 transition-transform">🙂</span>
+                        <span class="text-sm">00:42</span>
+                    </div>
+
+                    <!-- Game Grid -->
+                    <div class="p-3 game-grid">
+                        <div class="grid grid-cols-8 gap-0.5">
+                            <!-- Row 1 -->
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <!-- Row 2 -->
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <!-- Row 3 -->
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <!-- Row 4 -->
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm flex items-center justify-center text-sm">🚩</div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <!-- Row 5 -->
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <!-- Row 6 -->
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <!-- Row 7 -->
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <!-- Row 8 -->
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="flex justify-between items-center px-4 py-2 bg-gray-700 border-t border-gray-600 text-xs">
+                        <span class="text-gray-400">Share</span>
+                        <span class="text-gray-400">☰ Menu</span>
+                    </div>
+                </div>
+                <p class="text-center text-gray-400 text-sm mt-3">▲ Lives in your menu bar</p>
+            </div>
+
+            <!-- CTA Box -->
+            <div class="bg-gray-800/50 border border-gray-700 rounded-2xl p-8 max-w-md">
+                <h2 class="text-2xl font-bold mb-6 text-center">Get MenuMines</h2>
+
+                <div class="space-y-4">
+                    <a href="#" class="btn-primary block w-full py-4 px-6 rounded-xl text-center font-semibold text-lg">
+                        <span class="mr-2"></span> Download on App Store
+                        <span class="block text-sm opacity-80 mt-1">$2.99</span>
+                    </a>
+
+                    <a href="#" class="btn-secondary block w-full py-4 px-6 rounded-xl text-center font-semibold text-lg">
+                        <span class="mr-2">💳</span> Buy Direct
+                        <span class="block text-sm opacity-60 mt-1">Download .dmg - $2.99</span>
+                    </a>
+                </div>
+
+                <ul class="mt-6 space-y-2 text-sm text-gray-400">
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-400">✓</span> macOS 14+ (Sonoma) required
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-400">✓</span> One-time purchase, no subscriptions
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="text-green-400">✓</span> No ads, no tracking
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12">Features</h2>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div class="feature-card rounded-xl p-6 text-center">
+                <div class="text-4xl mb-4">🌍</div>
+                <h3 class="text-xl font-semibold mb-2">Global Daily Puzzle</h3>
+                <p class="text-gray-400 text-sm">Same board for every player on Earth. Share your time with friends.</p>
+            </div>
+
+            <div class="feature-card rounded-xl p-6 text-center">
+                <div class="text-4xl mb-4">📊</div>
+                <h3 class="text-xl font-semibold mb-2">Stats & Streaks</h3>
+                <p class="text-gray-400 text-sm">Win rate, best time, current streak—all tracked automatically.</p>
+            </div>
+
+            <div class="feature-card rounded-xl p-6 text-center">
+                <div class="text-4xl mb-4">♿</div>
+                <h3 class="text-xl font-semibold mb-2">Fully Accessible</h3>
+                <p class="text-gray-400 text-sm">VoiceOver support, keyboard navigation, respects motion preferences.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section class="container mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12">Screenshots</h2>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <!-- Fresh Start -->
+            <div class="text-center">
+                <div class="screenshot-card p-3 inline-block">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <div class="flex justify-between items-center px-3 py-2 bg-gray-700 text-xs">
+                            <span>🚩 010</span>
+                            <span class="text-xl">🙂</span>
+                            <span>00:00</span>
+                        </div>
+                        <div class="p-2 game-grid">
+                            <div class="grid grid-cols-8 gap-0.5">
+                                <!-- 8x8 grid of hidden cells -->
+                                <script>
+                                    // This will be static, just showing pattern
+                                </script>
+                                <!-- Generate 64 hidden cells -->
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-400 mt-3">Fresh Start</p>
+            </div>
+
+            <!-- Victory -->
+            <div class="text-center">
+                <div class="screenshot-card p-3 inline-block">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <div class="flex justify-between items-center px-3 py-2 bg-gray-700 text-xs">
+                            <span>🚩 000</span>
+                            <span class="text-xl">😎</span>
+                            <span>01:23</span>
+                        </div>
+                        <div class="p-2 game-grid">
+                            <div class="grid grid-cols-8 gap-0.5">
+                                <!-- Winning board state -->
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-400 mt-3">Victory! 🎉</p>
+            </div>
+
+            <!-- Game Over -->
+            <div class="text-center">
+                <div class="screenshot-card p-3 inline-block">
+                    <div class="bg-gray-800 rounded-lg overflow-hidden">
+                        <div class="flex justify-between items-center px-3 py-2 bg-gray-700 text-xs">
+                            <span>🚩 007</span>
+                            <span class="text-xl">😵</span>
+                            <span>00:45</span>
+                        </div>
+                        <div class="p-2 game-grid">
+                            <div class="grid grid-cols-8 gap-0.5">
+                                <!-- Game over state with exploded mine -->
+                                <div class="bg-red-600 w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💥</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💣</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💣</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💣</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💣</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-400 mt-3">Game Over</p>
+            </div>
+        </div>
+
+        <!-- Stats Preview -->
+        <div class="mt-12 max-w-2xl mx-auto">
+            <div class="screenshot-card p-6">
+                <h3 class="text-center text-lg font-semibold mb-4">📊 Your Stats</h3>
+                <div class="grid grid-cols-3 md:grid-cols-6 gap-4 text-center text-sm">
+                    <div>
+                        <div class="text-2xl font-bold text-indigo-400">47</div>
+                        <div class="text-gray-400 text-xs">Games</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-green-400">78%</div>
+                        <div class="text-gray-400 text-xs">Win Rate</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-yellow-400">00:38</div>
+                        <div class="text-gray-400 text-xs">Best Time</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-orange-400">12 🔥</div>
+                        <div class="text-gray-400 text-xs">Streak</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-purple-400">23</div>
+                        <div class="text-gray-400 text-xs">Best Streak</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold text-blue-400">01:42</div>
+                        <div class="text-gray-400 text-xs">Avg Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls Section -->
+    <section class="container mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12">Controls</h2>
+
+        <div class="max-w-md mx-auto bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+            <div class="space-y-3 text-sm">
+                <div class="flex justify-between items-center py-2 border-b border-gray-700">
+                    <span class="text-gray-400">Move selection</span>
+                    <kbd class="bg-gray-700 px-3 py-1 rounded">← ↑ ↓ →</kbd>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-700">
+                    <span class="text-gray-400">Reveal cell</span>
+                    <kbd class="bg-gray-700 px-3 py-1 rounded">Space</kbd>
+                </div>
+                <div class="flex justify-between items-center py-2 border-b border-gray-700">
+                    <span class="text-gray-400">Toggle flag</span>
+                    <kbd class="bg-gray-700 px-3 py-1 rounded">F</kbd>
+                </div>
+                <div class="flex justify-between items-center py-2">
+                    <span class="text-gray-400">Reset game</span>
+                    <kbd class="bg-gray-700 px-3 py-1 rounded">⌘R</kbd>
+                </div>
+            </div>
+            <p class="text-center text-gray-500 text-xs mt-4">Works perfectly with VoiceOver enabled</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="container mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12">FAQ</h2>
+
+        <div class="max-w-2xl mx-auto space-y-6">
+            <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6">
+                <h3 class="font-semibold mb-2">Is the puzzle really the same for everyone?</h3>
+                <p class="text-gray-400 text-sm">Yes! Using UTC-based seeding, every player worldwide gets the identical board each day.</p>
+            </div>
+
+            <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6">
+                <h3 class="font-semibold mb-2">What if I click a mine on my first move?</h3>
+                <p class="text-gray-400 text-sm">Impossible! First click is always safe—the mine gets relocated.</p>
+            </div>
+
+            <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6">
+                <h3 class="font-semibold mb-2">Can I replay today's puzzle?</h3>
+                <p class="text-gray-400 text-sm">By default, one attempt per day. Enable "Allow Refresh" in settings for unlimited replays.</p>
+            </div>
+
+            <div class="bg-gray-800/30 border border-gray-700 rounded-xl p-6">
+                <h3 class="font-semibold mb-2">Does it work with VoiceOver?</h3>
+                <p class="text-gray-400 text-sm">Absolutely. Every cell, button, and game state is fully accessible.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="container mx-auto px-6 py-16">
+        <div class="bg-gradient-to-r from-indigo-900/50 to-purple-900/50 border border-indigo-700/50 rounded-2xl p-12 text-center max-w-2xl mx-auto">
+            <div class="text-5xl mb-4">💣</div>
+            <h2 class="text-3xl font-bold mb-4">Ready to Sweep?</h2>
+            <p class="text-gray-400 mb-8">Join thousands of players solving the same puzzle every day.</p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#" class="btn-primary py-4 px-8 rounded-xl font-semibold">
+                     App Store - $2.99
+                </a>
+                <a href="#" class="btn-secondary py-4 px-8 rounded-xl font-semibold">
+                    💳 Buy Direct - $2.99
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="container mx-auto px-6 py-12 text-center border-t border-gray-800">
+        <div class="text-3xl mb-2">💣</div>
+        <div class="text-xl font-semibold mb-2">MenuMines</div>
+        <p class="text-gray-500 text-sm mb-6">Made with ♥ by MeriMeriMeri Software</p>
+        <p class="text-gray-600 text-xs mb-4">© 2026</p>
+        <div class="flex justify-center gap-6 text-sm text-gray-500">
+            <a href="#" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
+            <a href="#" class="hover:text-gray-300 transition-colors">Support</a>
+            <a href="#" class="hover:text-gray-300 transition-colors">Press Kit</a>
+        </div>
+    </footer>
+
+</body>
+</html>
