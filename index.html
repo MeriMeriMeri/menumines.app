@@ -23,6 +23,9 @@
     <meta name="twitter:description" content="One puzzle per day, same board for everyone on Earth. Track stats, streaks, and compete with friends.">
     <meta name="twitter:image" content="https://menumines.com/og-image.png">
 
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <link rel="apple-touch-icon" href="icon-128.png">
     <link rel="stylesheet" href="dist/styles.css">
 
     <!-- Structured Data: SoftwareApplication -->
@@ -88,7 +91,7 @@
 
     <!-- Hero Section -->
     <header class="container mx-auto px-6 pt-16 pb-12 text-center">
-        <div class="ascii-art text-xs sm:text-sm md:text-base text-indigo-400 mb-8 overflow-x-auto">
+        <div class="ascii-art text-xs sm:text-sm md:text-base text-indigo-400 mb-8 overflow-hidden">
 <pre class="inline-block text-left">
 ███╗   ███╗███████╗███╗   ██╗██╗   ██╗
 ████╗ ████║██╔════╝████╗  ██║██║   ██║
@@ -132,86 +135,104 @@
 
                     <!-- Game Grid -->
                     <div class="p-3 game-grid">
-                        <div class="grid grid-cols-8 gap-0.5">
+                        <div class="grid grid-cols-9 gap-0.5">
                             <!-- Row 1 -->
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
                             <!-- Row 2 -->
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
                             <!-- Row 3 -->
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
                             <!-- Row 4 -->
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm flex items-center justify-center text-sm">🚩</div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm flex items-center justify-center text-sm">🚩</div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
                             <!-- Row 5 -->
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
                             <!-- Row 6 -->
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
                             <!-- Row 7 -->
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-7 h-7 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
+                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
                             <!-- Row 8 -->
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
-                            <div class="cell-hidden w-7 h-7 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <!-- Row 9 -->
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
+                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
                         </div>
                     </div>
 
                     <!-- Footer -->
                     <div class="flex justify-between items-center px-4 py-2 bg-gray-700 border-t border-gray-600 text-xs">
                         <span class="text-gray-400">Share</span>
-                        <span class="text-gray-400">☰ Menu</span>
+                        <span class="text-gray-400">⚙️</span>
                     </div>
                 </div>
                 <p class="text-center text-gray-400 text-sm mt-3">▲ Lives in your menu bar</p>
@@ -294,72 +315,89 @@
                             <span>00:00</span>
                         </div>
                         <div class="p-2 game-grid">
-                            <div class="grid grid-cols-8 gap-0.5">
-                                <!-- 8x8 grid of hidden cells -->
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                            <div class="grid grid-cols-9 gap-0.5">
+                                <!-- 9x9 grid of hidden cells -->
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
                             </div>
                         </div>
                     </div>
@@ -377,79 +415,97 @@
                             <span>01:23</span>
                         </div>
                         <div class="p-2 game-grid">
-                            <div class="grid grid-cols-8 gap-0.5">
-                                <!-- Winning board state -->
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
+                            <div class="grid grid-cols-9 gap-0.5">
+                                <!-- Winning board state 9x9 -->
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-3 font-bold">3</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
                             </div>
                         </div>
                     </div>
@@ -467,79 +523,97 @@
                             <span>00:45</span>
                         </div>
                         <div class="p-2 game-grid">
-                            <div class="grid grid-cols-8 gap-0.5">
-                                <!-- Game over state with exploded mine -->
-                                <div class="bg-red-600 w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💥</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                            <div class="grid grid-cols-9 gap-0.5">
+                                <!-- Game over state with exploded mine 9x9 -->
+                                <div class="bg-red-600 w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">💥</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-3 font-bold">3</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💣</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">💣</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm"></div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💣</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">💣</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-3 font-bold">3</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💣</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">💣</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-3 font-bold">3</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">💣</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm flex items-center justify-center text-[8px]">🚩</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">💣</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm flex items-center justify-center text-[7px]">🚩</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
 
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-1 font-bold">1</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-2 font-bold">2</div>
-                                <div class="cell-revealed w-5 h-5 rounded-sm flex items-center justify-center text-[8px] num-3 font-bold">3</div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
-                                <div class="cell-hidden w-5 h-5 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-3 font-bold">3</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-1 font-bold">1</div>
+                                <div class="cell-revealed w-4 h-4 rounded-sm flex items-center justify-center text-[7px] num-2 font-bold">2</div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
+                                <div class="cell-hidden w-4 h-4 rounded-sm"></div>
                             </div>
                         </div>
                     </div>
@@ -639,7 +713,7 @@
     <!-- Final CTA -->
     <section aria-label="Get MenuMines" class="container mx-auto px-6 py-16">
         <div class="bg-gradient-to-r from-indigo-900/50 to-purple-900/50 border border-indigo-700/50 rounded-2xl p-12 text-center max-w-2xl mx-auto">
-            <div class="text-5xl mb-4">💣</div>
+            <img src="icon-128.png" alt="MenuMines icon" class="w-20 h-20 mx-auto mb-4">
             <h2 class="text-3xl font-bold mb-4">Ready to Sweep?</h2>
             <p class="text-gray-400 mb-8">Join thousands of players solving the same puzzle every day.</p>
 
