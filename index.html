@@ -123,110 +123,19 @@
     <section aria-label="Download MenuMines" class="container mx-auto px-6 py-12">
         <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
 
-            <!-- Game Preview -->
+            <!-- Game Preview (Playable) -->
             <div class="screenshot-card p-4 max-w-xs">
                 <div class="bg-gray-800 rounded-lg overflow-hidden">
                     <!-- Header -->
                     <div class="flex justify-between items-center px-4 py-3 bg-gray-700 border-b border-gray-600">
-                        <span class="text-sm">🚩 010</span>
-                        <span class="text-2xl cursor-pointer hover:scale-110 transition-transform">🙂</span>
-                        <span class="text-sm">00:42</span>
+                        <span id="mine-counter" class="text-sm">🚩 010</span>
+                        <span id="face-btn" class="text-2xl cursor-pointer hover:scale-110 transition-transform select-none">🙂</span>
+                        <span id="timer" class="text-sm">00:00</span>
                     </div>
 
                     <!-- Game Grid -->
                     <div class="p-3 game-grid">
-                        <div class="grid grid-cols-9 gap-0.5">
-                            <!-- Row 1 -->
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <!-- Row 2 -->
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <!-- Row 3 -->
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <!-- Row 4 -->
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm flex items-center justify-center text-sm">🚩</div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <!-- Row 5 -->
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <!-- Row 6 -->
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <!-- Row 7 -->
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-1 font-bold">1</div>
-                            <div class="cell-revealed w-6 h-6 rounded-sm flex items-center justify-center text-xs num-2 font-bold">2</div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <!-- Row 8 -->
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <!-- Row 9 -->
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                            <div class="cell-hidden w-6 h-6 rounded-sm"></div>
-                        </div>
+                        <div id="game-grid" class="grid grid-cols-9 gap-0.5"></div>
                     </div>
 
                     <!-- Footer -->
@@ -235,7 +144,7 @@
                         <span class="text-gray-400">⚙️</span>
                     </div>
                 </div>
-                <p class="text-center text-gray-400 text-sm mt-3">▲ Lives in your menu bar</p>
+                <p class="text-center text-gray-400 text-sm mt-3">▲ Try it! Left-click to reveal, right-click to flag</p>
             </div>
 
             <!-- CTA Box -->
@@ -742,5 +651,147 @@
         <p class="text-gray-600 text-xs">© 2026</p>
     </footer>
 
+<script>
+(function() {
+    const ROWS = 9, COLS = 9, MINES = 10;
+    const grid = document.getElementById('game-grid');
+    const faceBtn = document.getElementById('face-btn');
+    const mineCounter = document.getElementById('mine-counter');
+    const timerEl = document.getElementById('timer');
+
+    let board, revealed, flagged, gameOver, firstClick, flags, timer, seconds;
+
+    function init() {
+        board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+        revealed = Array.from({length: ROWS}, () => Array(COLS).fill(false));
+        flagged = Array.from({length: ROWS}, () => Array(COLS).fill(false));
+        gameOver = false; firstClick = true; flags = 0; seconds = 0;
+        clearInterval(timer); timer = null;
+        faceBtn.textContent = '\u{1F642}';
+        updateCounter();
+        timerEl.textContent = '00:00';
+        placeMines(-1, -1);
+        render();
+    }
+
+    function placeMines(safeR, safeC) {
+        for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) board[r][c] = 0;
+        let placed = 0;
+        while (placed < MINES) {
+            const r = Math.floor(Math.random() * ROWS), c = Math.floor(Math.random() * COLS);
+            if (board[r][c] === -1) continue;
+            if (r >= safeR - 1 && r <= safeR + 1 && c >= safeC - 1 && c <= safeC + 1) continue;
+            board[r][c] = -1; placed++;
+        }
+        for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+            if (board[r][c] === -1) continue;
+            let count = 0;
+            for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+                const nr = r + dr, nc = c + dc;
+                if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS && board[nr][nc] === -1) count++;
+            }
+            board[r][c] = count;
+        }
+    }
+
+    function reveal(r, c) {
+        if (r < 0 || r >= ROWS || c < 0 || c >= COLS || revealed[r][c] || flagged[r][c]) return;
+        revealed[r][c] = true;
+        if (board[r][c] === 0) {
+            for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) reveal(r + dr, c + dc);
+        }
+    }
+
+    function checkWin() {
+        for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+            if (board[r][c] !== -1 && !revealed[r][c]) return false;
+        }
+        return true;
+    }
+
+    function updateCounter() {
+        const remaining = MINES - flags;
+        mineCounter.textContent = '\u{1F6A9} ' + String(remaining).padStart(3, '0');
+    }
+
+    function startTimer() {
+        if (timer) return;
+        timer = setInterval(() => {
+            seconds++;
+            const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const s = String(seconds % 60).padStart(2, '0');
+            timerEl.textContent = m + ':' + s;
+        }, 1000);
+    }
+
+    function render() {
+        grid.innerHTML = '';
+        for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+            const cell = document.createElement('div');
+            cell.className = 'w-6 h-6 rounded-sm flex items-center justify-center text-xs font-bold select-none';
+            if (revealed[r][c]) {
+                cell.classList.add('cell-revealed');
+                if (board[r][c] === -1) {
+                    cell.textContent = '\u{1F4A3}';
+                } else if (board[r][c] > 0) {
+                    cell.textContent = board[r][c];
+                    cell.classList.add('num-' + board[r][c]);
+                }
+            } else {
+                cell.classList.add('cell-hidden');
+                cell.style.cursor = gameOver ? 'default' : 'pointer';
+                if (flagged[r][c]) cell.textContent = '\u{1F6A9}';
+            }
+            if (!gameOver) {
+                cell.addEventListener('click', () => onLeftClick(r, c));
+                cell.addEventListener('contextmenu', (e) => { e.preventDefault(); onRightClick(r, c); });
+            }
+            grid.appendChild(cell);
+        }
+    }
+
+    function onLeftClick(r, c) {
+        if (gameOver || revealed[r][c] || flagged[r][c]) return;
+        if (firstClick) {
+            firstClick = false;
+            placeMines(r, c);
+            startTimer();
+        }
+        if (board[r][c] === -1) {
+            clearInterval(timer);
+            gameOver = true;
+            // Reveal all mines
+            for (let rr = 0; rr < ROWS; rr++) for (let cc = 0; cc < COLS; cc++) {
+                if (board[rr][cc] === -1) revealed[rr][cc] = true;
+            }
+            faceBtn.textContent = '\u{1F635}';
+            render();
+            // Highlight the clicked mine
+            const idx = r * COLS + c;
+            grid.children[idx].className = 'w-6 h-6 rounded-sm flex items-center justify-center text-xs font-bold select-none bg-red-600';
+            grid.children[idx].textContent = '\u{1F4A5}';
+            return;
+        }
+        reveal(r, c);
+        if (checkWin()) {
+            clearInterval(timer);
+            gameOver = true;
+            faceBtn.textContent = '\u{1F60E}';
+        }
+        render();
+    }
+
+    function onRightClick(r, c) {
+        if (gameOver || revealed[r][c]) return;
+        flagged[r][c] = !flagged[r][c];
+        flags += flagged[r][c] ? 1 : -1;
+        updateCounter();
+        render();
+    }
+
+    faceBtn.addEventListener('click', init);
+    init();
+})();
+</script>
 </body>
 </html>
