@@ -81,3 +81,18 @@ a {
 .num-3 { color: #ef4444; }
 .num-4 { color: #1e40af; }
 .num-5 { color: #92400e; }
+
+.mode-toggle {
+    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+    border: 1px solid #718096;
+    line-height: 1;
+}
+
+.mode-toggle-active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #667eea;
+}
+
+#game-grid > div {
+    touch-action: manipulation;
+}

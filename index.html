@@ -124,7 +124,7 @@
         <div class="flex flex-col lg:flex-row lg:items-stretch items-center justify-center gap-12">
 
             <!-- Game Preview (Playable) -->
-            <div class="screenshot-card p-4 max-w-xs flex flex-col">
+            <div class="screenshot-card p-4 max-w-sm sm:max-w-xs flex flex-col">
                 <div class="bg-gray-800 rounded-lg overflow-hidden">
                     <!-- Header -->
                     <div class="flex justify-between items-center px-4 py-3 bg-gray-700 border-b border-gray-600">
@@ -141,10 +141,17 @@
                     <!-- Footer -->
                     <div class="flex justify-between items-center px-4 py-2 bg-gray-700 border-t border-gray-600 text-xs">
                         <span class="text-gray-400">Share</span>
-                        <span class="text-gray-400">⚙️</span>
+                        <div class="flex items-center gap-2">
+                            <button id="mode-reveal" class="mode-toggle mode-toggle-active sm:hidden px-2 py-1 rounded text-sm" aria-label="Reveal mode">🔍</button>
+                            <button id="mode-flag" class="mode-toggle sm:hidden px-2 py-1 rounded text-sm" aria-label="Flag mode">🚩</button>
+                            <span class="text-gray-400 hidden sm:inline">⚙️</span>
+                        </div>
                     </div>
                 </div>
-                <p class="text-center text-gray-400 text-sm mt-3">▲ Try it! Left-click to reveal, right-click to flag</p>
+                <p class="text-center text-gray-400 text-sm mt-3">
+                    <span class="hidden sm:inline">▲ Try it! Left-click to reveal, right-click to flag</span>
+                    <span class="sm:hidden">▲ Try it! Tap cells, toggle 🔍/🚩 mode below</span>
+                </p>
             </div>
 
             <!-- CTA Box -->
@@ -660,6 +667,7 @@
     const timerEl = document.getElementById('timer');
 
     let board, revealed, flagged, gameOver, firstClick, flags, timer, seconds;
+    let mobileMode = 'reveal';
 
     function init() {
         board = Array.from({length: ROWS}, () => Array(COLS).fill(0));
@@ -728,7 +736,7 @@
         grid.innerHTML = '';
         for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
             const cell = document.createElement('div');
-            cell.className = 'w-6 h-6 rounded-sm flex items-center justify-center text-xs font-bold select-none';
+            cell.className = 'w-7 h-7 sm:w-6 sm:h-6 rounded-sm flex items-center justify-center text-xs font-bold select-none';
             if (revealed[r][c]) {
                 cell.classList.add('cell-revealed');
                 if (board[r][c] === -1) {
@@ -743,7 +751,13 @@
                 if (flagged[r][c]) cell.textContent = '\u{1F6A9}';
             }
             if (!gameOver) {
-                cell.addEventListener('click', () => onLeftClick(r, c));
+                cell.addEventListener('click', () => {
+                    if (window.innerWidth < 640 && mobileMode === 'flag') {
+                        onRightClick(r, c);
+                    } else {
+                        onLeftClick(r, c);
+                    }
+                });
                 cell.addEventListener('contextmenu', (e) => { e.preventDefault(); onRightClick(r, c); });
             }
             grid.appendChild(cell);
@@ -768,7 +782,7 @@
             render();
             // Highlight the clicked mine
             const idx = r * COLS + c;
-            grid.children[idx].className = 'w-6 h-6 rounded-sm flex items-center justify-center text-xs font-bold select-none bg-red-600';
+            grid.children[idx].className = 'w-7 h-7 sm:w-6 sm:h-6 rounded-sm flex items-center justify-center text-xs font-bold select-none bg-red-600';
             grid.children[idx].textContent = '\u{1F4A5}';
             return;
         }
@@ -789,7 +803,23 @@
         render();
     }
 
+    function initModeToggles() {
+        const revealBtn = document.getElementById('mode-reveal');
+        const flagBtn = document.getElementById('mode-flag');
+        revealBtn.addEventListener('click', () => {
+            mobileMode = 'reveal';
+            revealBtn.classList.add('mode-toggle-active');
+            flagBtn.classList.remove('mode-toggle-active');
+        });
+        flagBtn.addEventListener('click', () => {
+            mobileMode = 'flag';
+            flagBtn.classList.add('mode-toggle-active');
+            revealBtn.classList.remove('mode-toggle-active');
+        });
+    }
+
     faceBtn.addEventListener('click', init);
+    initModeToggles();
     init();
 })();
 </script>
